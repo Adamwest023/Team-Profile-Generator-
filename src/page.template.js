@@ -1,23 +1,27 @@
+const fs = require('fs');
+const { resolve } = require('path');
+
+
 
 // create manager section
-const generateManager = (employeeArr) => {
+const generateManager = manager => {
     //return formatted html
     return `
      <div class= "card">
         <div class="card-header">
-            <h2>${employeeArr.name}</h2>
+            <h2>${this.name}</h2>
             <i class="fa-solid fa-mug-hot"></i>
             <p>Manager</p>
         </div>
         <div class="card-body">
             <div>
-                <p>ID:${employeeArr.id}</p>
+                <p>ID:${this.id}</p>
             </div>
             <div>
-                <p>Email:${employeeArr.email}</p>
+                <p>Email:${this.email}</p>
             </div>
             <div>
-                <p>Office Number:${employeeArr.number}</p>
+                <p>Office Number:${this.number}</p>
             </div>
         </div> 
      </div>
@@ -76,7 +80,7 @@ const generateEngineer = engineer => {
         </div> 
     </div>
     `;
-    
+
 };
 
 //create pageTemplate
@@ -125,6 +129,6 @@ function pageTemplate(employeeArr) {
     // console.log(arr);
     // console.log(arr[3].getRole());
     return htmltemp;
-}
+};
 
 module.exports = pageTemplate;

@@ -3,7 +3,7 @@ const fs = require('fs');
 const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
-const internal = require('stream');
+
 const pageTemplate = require("./src/page.template")
 
 const employeeArr = []
@@ -122,4 +122,8 @@ function buildHtml() {
         if (err) throw err;
     })
 }
+
+module.exports = { buildHtml }
+
 managerInfo();
+
