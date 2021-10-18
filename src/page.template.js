@@ -9,19 +9,19 @@ const generateManager = manager => {
     return `
      <div class= "card">
         <div class="card-header">
-            <h2>${this.name}</h2>
+            <h2>${manager.name}</h2>
             <i class="fa-solid fa-mug-hot"></i>
             <p>Manager</p>
         </div>
         <div class="card-body">
             <div>
-                <p>ID:${this.id}</p>
+                <p>ID:${manager.id}</p>
             </div>
             <div>
-                <p>Email:${this.email}</p>
+                <p>Email:${manager.email}</p>
             </div>
             <div>
-                <p>Office Number:${this.number}</p>
+                <p>Office Number:${manager.officeNumber}</p>
             </div>
         </div> 
      </div>
@@ -36,19 +36,19 @@ const generateIntern = intern => {
     return `
     <div class= "card">
         <div class="card-header">
-            <h2>${this.name}</h2>
+            <h2>${intern.name}</h2>
             <i class="fa-solid fa-user-graduate"></i>
             <p>Intern</p>
         </div>
         <div class="card-body">
             <div>
-                <p>ID:${this.id}</p>
+                <p>ID:${intern.id}</p>
             </div>
             <div>
-                <p>Email:${this.email}</p>
+                <p>Email:${intern.email}</p>
             </div>
             <div>
-                <p>School:${this.school}</p>
+                <p>School:${intern.school}</p>
             </div>
         </div> 
     </div>
@@ -63,19 +63,19 @@ const generateEngineer = engineer => {
     return `
     <div class= "card">
         <div class="card-header">
-            h2>${this.name}</h2>
+            <h2>${engineer.name}</h2>
             <i class="fa-solid fa-glasses"></i>
             <p>Engineer</p>
         </div>
         <div class="card-body">
             <div>
-                <p>ID:${this.id}</p>
+                <p>ID:${engineer.id}</p>
             </div>
             <div>
-                <p>Email:${this.email}</p>
+                <p>Email:${engineer.email}</p>
             </div>
             <div>
-                <p>GitHub:${this.github}</p>
+                <p>GitHub:${engineer.github}</p>
             </div>
         </div> 
     </div>
@@ -85,6 +85,7 @@ const generateEngineer = engineer => {
 
 //create pageTemplate
 function pageTemplate(employeeArr) {
+    console.log(employeeArr)
     let htmltemp = `
     <!DOCTYPE html> 
     <html lang="en"> 
@@ -105,9 +106,7 @@ function pageTemplate(employeeArr) {
             </div>
         </header>
         <main class="container my-5">
-        ${generateManager()}
-        ${generateEngineer()}
-        ${generateIntern()}
+    
         </main>
         <footer class="container text-center py-3">
             <p>Created by Adam</p>
@@ -116,14 +115,15 @@ function pageTemplate(employeeArr) {
     </html>
     `
     for (var i = 0; i < employeeArr.length; i++) {
-        if (employeeArr[i].getRole() === "Manager") {
-            htmltemp += generateManager()
+        if (employeeArr[i].role === "Manager") {
+            // console.log(employeeArr[i])
+            htmltemp += generateManager(employeeArr[i])
         }
-        if (employeeArr[i].getRole() === "Engineer") {
-            htmltemp += generateEngineer()
+        if (employeeArr[i].role === "Engineer") {
+            htmltemp += generateEngineer(employeeArr[i])
         }
-        if (employeeArr[i].getRole() === "Intern") {
-            htmltemp += generateIntern()
+        if (employeeArr[i].role=== "Intern") {
+            htmltemp += generateIntern(employeeArr[i])
         }
     };
     // console.log(arr);

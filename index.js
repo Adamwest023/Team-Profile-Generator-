@@ -110,7 +110,7 @@ const internInfo = () => {
             name:'school'
         }
     ]).then(answers => {
-        const intern = new Intern(answers.name, answers.id, answers.email, answers.github)
+        const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
         employeeArr.push(intern);
         mainMenu()
     });
