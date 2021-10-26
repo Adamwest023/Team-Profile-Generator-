@@ -19,13 +19,13 @@ const generateManager = manager => {
                 </div>
                 <div class="card-body">
                 <div>
-                <p>ID:${manager[i].id}</p>
+                <p>ID: ${manager[i].id}</p>
                 </div>
                 <div>
-                    <p>Email:${manager[i].email}</p>
+                    <p>Email: ${manager[i].email}</p>
                     </div>
                     <div>
-                    <p>Office Number:${manager[i].officeNumber}</p>
+                    <p>Office Number: ${manager[i].officeNumber}</p>
                     </div>
                     </div> 
                     </div>
@@ -48,13 +48,13 @@ const generateIntern = arr => {
             </div>
             <div class="card-body">
                 <div>
-                    <p>ID:${arr[i].id}</p>
+                    <p>ID: ${arr[i].id}</p>
                 </div>
                 <div>
-                    <p>Email:${arr[i].email}</p>
+                    <p>Email: ${arr[i].email}</p>
                 </div>
                 <div>
-                    <p>School:${arr[i].school}</p>
+                    <p>School: ${arr[i].school}</p>
                 </div>
             </div> 
         </div>
@@ -77,13 +77,13 @@ const generateEngineer = arr => {
             </div>
             <div class="card-body">
                 <div>
-                    <p>ID:${arr[i].id}</p>
+                    <p>ID: ${arr[i].id}</p>
                 </div>
                 <div>
-                    <p>Email:${arr[i].email}</p>
+                    <p>Email: ${arr[i].email}</p>
                 </div>
                 <div>
-                    <p>Github:${arr[i].github}</p>
+                    <p>Github: ${arr[i].github}</p>
                 </div>
             </div> 
         </div>`;
@@ -106,7 +106,7 @@ function pageTemplate(employeeArr) {
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
         <link href="https://fonts.googleapis.com/css?family=Public+Sans:300i,300,500&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="src/style.css">
         <title>Team Portfolio</title>
     </head>
 
