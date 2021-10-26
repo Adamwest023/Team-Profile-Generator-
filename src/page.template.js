@@ -6,80 +6,91 @@ const { resolve } = require('path');
 // create manager section
 const generateManager = manager => {
     //return formatted html
-    return `
-     <div class= "card">
-        <div class="card-header">
-            <h2>${manager.name}</h2>
-            <i class="fa-solid fa-mug-hot"></i>
-            <p>Manager</p>
-        </div>
-        <div class="card-body">
-            <div>
-                <p>ID:${manager.id}</p>
-            </div>
-            <div>
-                <p>Email:${manager.email}</p>
-            </div>
-            <div>
-                <p>Office Number:${manager.officeNumber}</p>
-            </div>
-        </div> 
-     </div>
-    `;
+    let managerTemp = ``
+    for (var i = 0; i < manager.length; i++) {
+        if(manager[i].getRole() == "Manager"){
+
+            managerTemp +=`
+            <div class= "card">
+            <div class="card-header">
+                <h2>${manager[i].name}</h2>
+                <i class="fa-solid fa-mug-hot"></i>
+                <p>Manager:</p>
+                </div>
+                <div class="card-body">
+                <div>
+                <p>ID:${manager[i].id}</p>
+                </div>
+                <div>
+                    <p>Email:${manager[i].email}</p>
+                    </div>
+                    <div>
+                    <p>Office Number:${manager[i].officeNumber}</p>
+                    </div>
+                    </div> 
+                    </div>
+                    `;
+                }
+    };
+    return managerTemp
 };
 
 // create intern html section
-const generateIntern = intern => {
-    if (!intern) {
-        return '';
-    }
-    return `
-    <div class= "card">
-        <div class="card-header">
-            <h2>${intern.name}</h2>
-            <i class="fa-solid fa-user-graduate"></i>
-            <p>Intern</p>
+const generateIntern = arr => {
+    let internTemp = ''
+    for (var i = 0; i < arr.length; i++){
+        if(arr[i].getRole() == "Intern"){
+            internTemp = `<div class= "card">
+            <div class="card-header">
+                <h2>${arr[i].name}</h2>
+                <i class="fa-solid fa-glasses"></i>
+                <p>Intern</p>
+            </div>
+            <div class="card-body">
+                <div>
+                    <p>ID:${arr[i].id}</p>
+                </div>
+                <div>
+                    <p>Email:${arr[i].email}</p>
+                </div>
+                <div>
+                    <p>School:${arr[i].school}</p>
+                </div>
+            </div> 
         </div>
-        <div class="card-body">
-            <div>
-                <p>ID:${intern.id}</p>
-            </div>
-            <div>
-                <p>Email:${intern.email}</p>
-            </div>
-            <div>
-                <p>School:${intern.school}</p>
-            </div>
-        </div> 
-    </div>
-    `;
+        `;
+        }
+    }
+    return internTemp;
 };
 
 // create engineer html section
-const generateEngineer = engineer => {
-    if (!engineer) {
-        return '';
+const generateEngineer = arr => {
+    let engineerTemp = ''
+    for (var i = 0; i < arr.length; i++){
+        if(arr[i].getRole() == "Engineer"){
+            engineerTemp = `<div class= "card">
+            <div class="card-header">
+                <h2>${arr[i].name}</h2>
+                <i class="fa-solid fa-glasses"></i>
+                <p>Engineer</p>
+            </div>
+            <div class="card-body">
+                <div>
+                    <p>ID:${arr[i].id}</p>
+                </div>
+                <div>
+                    <p>Email:${arr[i].email}</p>
+                </div>
+                <div>
+                    <p>Github:${arr[i].github}</p>
+                </div>
+            </div> 
+        </div>`;
+        }
     }
-    return `
-    <div class= "card">
-        <div class="card-header">
-            <h2>${engineer.name}</h2>
-            <i class="fa-solid fa-glasses"></i>
-            <p>Engineer</p>
-        </div>
-        <div class="card-body">
-            <div>
-                <p>ID:${engineer.id}</p>
-            </div>
-            <div>
-                <p>Email:${engineer.email}</p>
-            </div>
-            <div>
-                <p>GitHub:${engineer.github}</p>
-            </div>
-        </div> 
-    </div>
-    `;
+
+    return engineerTemp;
 
 };
 
@@ -106,7 +117,9 @@ function pageTemplate(employeeArr) {
             </div>
         </header>
         <main class="container my-5">
-    
+        ${generateManager(employeeArr)}
+        ${generateEngineer(employeeArr)}
+        ${generateIntern(employeeArr)}
         </main>
         <footer class="container text-center py-3">
             <p>Created by Adam</p>
@@ -114,18 +127,6 @@ function pageTemplate(employeeArr) {
     </body>
     </html>
     `
-    for (var i = 0; i < employeeArr.length; i++) {
-        if (employeeArr[i].role === "Manager") {
-            // console.log(employeeArr[i])
-            htmltemp += generateManager(employeeArr[i])
-        }
-        if (employeeArr[i].role === "Engineer") {
-            htmltemp += generateEngineer(employeeArr[i])
-        }
-        if (employeeArr[i].role=== "Intern") {
-            htmltemp += generateIntern(employeeArr[i])
-        }
-    };
     // console.log(arr);
     // console.log(arr[3].getRole());
     return htmltemp;
